@@ -14,25 +14,6 @@ Servo servo2;
 int limiteLuz = 400;
 int puertasAbiertas = 0;
 
-void detectarMovimiento(int pin, int &movimiento)
-{
-  movimiento = digitalRead(pin);
-}
-
-void detectarLuz(int pin, int limite, int &oscuro)
-{
-  int valor = analogRead(pin);
-
-  if (valor < limite)
-  {
-    oscuro = 1;
-  }
-  else
-  {
-    oscuro = 0;
-  }
-}
-
 void prenderFoco(int pin, int estado)
 {
   digitalWrite(pin, estado);
@@ -50,6 +31,25 @@ void cerrarPuertas(int posicion1, int posicion2)
   servo1.write(posicion1);
   servo2.write(posicion2);
   puertasAbiertas = 0;
+}
+
+void detectarMovimiento(int pin, int &movimiento)
+{
+  movimiento = digitalRead(pin);
+}
+
+void detectarLuz(int pin, int limite, int &oscuro)
+{
+  int valor = analogRead(pin);
+
+  if (valor < limite)
+  {
+    oscuro = 1;
+  }
+  else
+  {
+    oscuro = 0;
+  }
 }
 
 void cancionAbrir(int pin) {
